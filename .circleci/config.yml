@@ -12,6 +12,6 @@ jobs:
       - run: npm --version
       - run: google-chrome --version
 
-      - run: cd website && npm install
-      - run: cd website && npm run karma start karma-ci.conf.js
-      - run: cd website && npm run e2e protractor.conf.js
+      - run: npm install
+      - run: npm run karma start src/karma.conf.js
+      - run: npm run e2e e2e/protractor.conf.js

@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/workspace
+    docker:
+      - image: circleci/node:8-browsers
+    steps:
+      - checkout
+
+      - run: export IS_CIRCLE=true
+      - run: node --version
+      - run: npm --version
+      - run: google-chrome --version
+
+      - run: cd website && npm install
+      - run: cd website && npm run karma start karma-ci.conf.js
+      - run: cd website && npm run e2e protractor.conf.js
